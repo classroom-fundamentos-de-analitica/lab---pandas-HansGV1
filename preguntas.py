@@ -208,10 +208,14 @@ def pregunta_11():
     table = tbl1.copy()
     table = table.groupby("_c0").agg({"_c4": lambda i: sorted(list(i))})
     for z, a in table.iterrows():
-        a["_c4"] = ",".join([str(index) for index in a['_c4']])
+        a["_c4"] = ",".join(str(index) for index in a['_c4'])
+    c0 = list(range(0,40))
+    table["_c0"] = c0
+    cols = table.columns.tolist()
+    cols = cols[-1:] + cols[:-1]
+    table = table[cols]
     
     return table 
-
 
 def pregunta_12():
     """
