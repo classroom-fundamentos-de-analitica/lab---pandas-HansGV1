@@ -25,6 +25,7 @@ def pregunta_01():
     """
     return len(tbl0)
 
+
 def pregunta_02():
     """
     ¿Cuál es la cantidad de columnas en la tabla `tbl0.tsv`?
@@ -49,7 +50,7 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    table = tbl0.groupby("_c1").size()
+    table = tbl0.groupby("_c1")["_c1"].size()
     
     return table
 
@@ -99,10 +100,10 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    table = [pd.Series(tbl1['_c4'].unique()).str.upper().sort_values()]
+    table = [a.upper() for a in tbl1["_c4"].unique()]
+    table.sort()
     
     return table
-
 
 def pregunta_07():
     """
@@ -180,8 +181,8 @@ def pregunta_10():
     """
     table = tbl0.copy()
     table = table.groupby("_c1").agg({"_c2": lambda i: sorted(list(i))})
-    for a in table.iterrows():
-        a["_c2"] = ":".join([str(index) for index in a['_c2']])
+    for z, a in table.iterrows():
+        a["_c2"] = ":".join([str(index) for index in a["_c2"]])
     
     return table 
 
@@ -204,7 +205,7 @@ def pregunta_11():
     """
     table = tbl1.copy()
     table = table.groupby("_c0").agg({"_c4": lambda i: sorted(list(i))})
-    for a in table.iterrows():
+    for z, a in table.iterrows():
         a["_c4"] = ",".join([str(index) for index in a['_c4']])
     
     return table 
@@ -237,7 +238,6 @@ def pregunta_12():
     table = pd.DataFrame({"_c0":a.keys(), "_c5":[",".join(value) for value in a.values()]})
     
     return table
-
 
 
 def pregunta_13():
