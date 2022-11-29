@@ -34,9 +34,6 @@ def pregunta_02():
     """
     return tbl0.shape[1]
 
-print(pregunta_02())
-
-
 def pregunta_03():
     """
     ¿Cuál es la cantidad de registros por cada letra de la columna _c1 del archivo
