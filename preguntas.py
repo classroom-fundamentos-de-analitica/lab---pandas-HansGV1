@@ -36,6 +36,7 @@ def pregunta_02():
     """
     return tbl0.shape[1]
 
+
 def pregunta_03():
     """
     ¿Cuál es la cantidad de registros por cada letra de la columna _c1 del archivo
@@ -67,7 +68,7 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    table = tbl0.groupby("_c1").mean()["_c2"]
+    table = tbl0.groupby("_c1").mean()["_c2"][0:]
     
     return table
 
@@ -104,6 +105,7 @@ def pregunta_06():
     table.sort()
     
     return table
+
 
 def pregunta_07():
     """
